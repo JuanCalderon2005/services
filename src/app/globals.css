@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(to bottom right, rgb(192, 132, 252), rgb(236, 72, 153), rgb(239, 68, 68));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
