@@ -15,10 +15,17 @@
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
   background: linear-gradient(to bottom right, rgb(192, 132, 252), rgb(236, 72, 153), rgb(239, 68, 68));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 @layer utilities {

@@ -11,14 +11,20 @@ interface LayoutProps {
 const Layout = styled.div`
 display: flex;
 flex-direction: column;
+align-items: center;
+background-color: white;
+width: 80%;
+height: 90vh;
 `;
 
 
 export default function layoutComponent({ children }: LayoutProps) {
     return (
         <>
-            <Title />
-            <Layout>{children}</Layout>
+            <Layout>
+                <Title />
+                {children}
+            </Layout>
         </>
     )
 }
