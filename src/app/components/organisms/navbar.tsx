@@ -1,7 +1,7 @@
 import { FaBuilding, FaSuitcase } from "react-icons/fa";
 import styled from "styled-components";
-import SwitchComponent from "../atoms/switch/switch";
-import { SearchComponent } from "../atoms/search/search";
+import SwitchComponent from "../atoms/switch";
+import { SearchComponent } from "../atoms/search";
 
 
 const StyledNavbar = styled.nav`

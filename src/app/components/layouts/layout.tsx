@@ -3,7 +3,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavbarComponent } from '../organisms/navbar';
-import TitleComponent from '../atoms/title/title';
+import TitleComponent from '../atoms/title';
 
 interface LayoutProps {
     children: React.ReactNode;
