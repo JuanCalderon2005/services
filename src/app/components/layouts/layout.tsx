@@ -15,6 +15,7 @@ align-items: center;
 background-color: white;
 width: 80%;
 height: 90vh;
+border-radius: 10px;
 `;
 
 
