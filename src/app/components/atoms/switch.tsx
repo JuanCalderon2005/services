@@ -46,7 +46,7 @@ export default function SwitchComponent({ options, onChange }: SwitchProps) {
   };
 
   if(selectedIndex === 0){
-    router.push('/');
+    router.push('/vacants');
   } else if(selectedIndex === 1){
     router.push('/companies');
   }
