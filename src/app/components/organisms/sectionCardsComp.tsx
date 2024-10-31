@@ -21,6 +21,11 @@ const SectionComp = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 768px) {
+        height: auto;
+        padding: 20px;
+    }
 `;
 
 const Cards = styled.div`
@@ -30,6 +35,11 @@ const Cards = styled.div`
     gap: 10px;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
 `;
 
 const Pagination = styled.div`
@@ -38,7 +48,29 @@ const Pagination = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 16px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 10px;
+    }
 `;
+
+// const Cards = styled.div`
+//     display: grid;
+//     grid-template-columns: repeat(3, 1fr);
+//     grid-template-rows: repeat(2, auto);
+//     gap: 10px;
+//     justify-content: center;
+//     align-items: center;
+// `;
+
+// const Pagination = styled.div`
+//     width: 100%;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     margin-top: 16px;
+// `;
 
 const useServices = new Service();
 export default function SectionCardComp({ data , pagination}: CardProps) {
