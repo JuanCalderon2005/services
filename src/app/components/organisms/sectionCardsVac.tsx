@@ -1,20 +1,20 @@
 'use client'
 import ButtonPag from "../atoms/buttonPagination";
 import Modal from "../atoms/modal";
-import CardCompComponents from "../molecules/cardComp";
-import FormEmp from "../molecules/formEmp";
-import { ICompanies, ICompany, IPageable } from "@/app/models/modelsProgram/program.model";
+import CardVacComponents from "../molecules/cardVac";
+import FormVac from "../molecules/formVac";
+import { IPageable, IVacancy, IVacancyResponse } from "@/app/models/modelsProgram/program.model";
 import { Service } from "@/app/services/coders.service";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import styled from "styled-components";
 
 interface CardProps {
-    data: ICompanies;
+    data: IVacancyResponse;
     pagination: IPageable;
 }
 
-const SectionComp = styled.div`
+const SectionVac = styled.div`
     width: 100%;
     height: 55vh;
     display: flex;
@@ -37,11 +37,10 @@ const Pagination = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 16px;
 `;
 
 const useServices = new Service();
-export default function SectionCardComp({ data , pagination}: CardProps) {
+export default function SectionCardCav({ data, pagination }: CardProps) {
 
     const searchParams = useSearchParams();
     const router = useRouter();
@@ -50,10 +49,10 @@ export default function SectionCardComp({ data , pagination}: CardProps) {
     const toggleModalEmp = () => {
         setModalOpenEmp(!ModalOpenEmp);
         if (ModalOpenEmp) {
-            setCompanySelected(undefined);
+            setVacancySelected(undefined);
         }
     }
-    const [companySelected, setCompanySelected] = useState<ICompany>();
+    const [vacancieSelected, setVacancySelected] = useState<IVacancy>();
 
     const HandleClickNext = (nextPage: number) => {
         const params = new URLSearchParams(searchParams.toString());
@@ -71,32 +70,32 @@ export default function SectionCardComp({ data , pagination}: CardProps) {
         }
     };
 
-    const handleEdit = (company: ICompany) => {
-        setCompanySelected(company);
+    const handleEdit = (vacant: IVacancy) => {
+        setVacancySelected(vacant);
         toggleModalEmp();
     };
 
     const handleDelete = async (id: string) => {
         try {
-            await useServices.deleteCompany(id);
-            alert('Empresa eliminada correctamente');
+            await useServices.deleteVacant(id);
+            alert('Compania eliminada correctamente');
+            router.refresh();
         } catch (error) {
-            console.error('Error eliminando empresa:', error);
+            console.error('Error eliminando compania:', error);
         }
     };
 
-    console.log(data);
-
     const courrentPage = pagination.pageNumber + 1;
+
     return (
-        <SectionComp>
+        <SectionVac>
             <Cards>
-                {data.content.map((company) => (
-                    <CardCompComponents
-                        key={company.id}
-                        company={company}
+                {data.content.map((vacant) => (
+                    <CardVacComponents
+                        key={vacant.id}
+                        vacant={vacant}
                         onClickEdit={handleEdit}
-                        onClickDelete={()=>handleDelete(company.id)}
+                        onClickDelete={()=>handleDelete(vacant.id)}
                     />
                 ))}
             </Cards>
@@ -106,8 +105,8 @@ export default function SectionCardComp({ data , pagination}: CardProps) {
                 <ButtonPag label=">" onClick={() => HandleClickNext(courrentPage + 1)} />
             </Pagination>
             <Modal isOpen={ModalOpenEmp} onClose={toggleModalEmp} title="Editar Compañia">
-                    <FormEmp onClose={toggleModalEmp} initialData={companySelected}/>
+                <FormVac onClose={toggleModalEmp} initialData={vacancieSelected} />
             </Modal>
-        </SectionComp>
+        </SectionVac>
     );
 }

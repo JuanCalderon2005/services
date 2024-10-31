@@ -1,6 +1,9 @@
 'use client'
 import styled from "styled-components";
 import HeaderPage from "../organisms/headerPage";
+import { useState } from "react";
+import Modal from "../atoms/modal";
+import FormVac from "../molecules/formVac";
 
 const Vacants = styled.div`
     display: flex;
@@ -13,15 +16,18 @@ const Vacants = styled.div`
 `;
 export default function VacantsTemplate() {
 
-    // const [ModalOpenVac, setModalOpenVac] = useState(false);
+    const [ModalOpenVac, setModalOpenVac] = useState(false);
 
     const toggleModalVac = () => {
-        console.log("toggleModalVac");
+        setModalOpenVac(!ModalOpenVac);
     };
 
     return (
         <Vacants>
             <HeaderPage label="Agregar Vacante" onClick={toggleModalVac} color="primary" hoverColor="primary" title="Vacantes" />
+            <Modal isOpen={ModalOpenVac} onClose={toggleModalVac} title="Agregar Vacante">
+                <FormVac onClose={toggleModalVac} />
+            </Modal>
         </Vacants>
     )
 }

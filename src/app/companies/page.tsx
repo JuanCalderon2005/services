@@ -1,14 +1,3 @@
-// import React from 'react'
-// import CompaniesTemplate from '../components/templates/companiesTemplate'
-
-// export default function CompaniesPage() {
-//   return (
-//     <>
-//       <CompaniesTemplate />
-//     </>
-//   )
-// }
-
 import SectionCardComp from '../components/organisms/sectionCardsComp';
 import { IGetCompanyRequest } from '@/app/models/modelsProgram/program.model';
 import { Service } from '@/app/services/coders.service';
@@ -23,7 +12,7 @@ const useCompaniesServices = new Service();
 export default async function CompaniesPage({ searchParams }: Iprops) {
   const page = searchParams.page ? parseInt(searchParams.page.toString()) : 1;
   const name = searchParams.name ? searchParams.name : '';
-  const response = await useCompaniesServices.Companies({ page, size: 4, name });
+  const response = await useCompaniesServices.Companies({ page, size: 6, name });
 
   function SearchBarFallback() {
     return <>Loading...</>

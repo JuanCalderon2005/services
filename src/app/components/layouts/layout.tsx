@@ -14,12 +14,11 @@ const Layout = styled.div`
     flex-direction: column;
     align-items: center;
     background-color: white;
-    width: 90%;
+    width: 95%;
     max-width: 1200px;
-    height: auto;
+    height: 100vh;
     min-height: 90vh;
     border-radius: 10px;
-    gap: 20px;
     padding: 20px;
     box-sizing: border-box;
 
